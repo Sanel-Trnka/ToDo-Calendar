@@ -18,7 +18,7 @@
             <i class="fas fa-cogs"></i>
           </button>
         </div>
-        <transition name="fade">
+        <transition enter-active-class="animate__animated animate__bounceInRight" leave-active-class="animate__animated animate__bounceOutRight">
           <CalendarSettings v-if="showSettings"/>
         </transition>
       </div>
@@ -65,21 +65,10 @@ export default {
 <style>
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~animate.css/animate.min.css";
 
 .square {
   width: 40px;
   height: 40px;
-}
-
-.fade-enter-from, .fade-leave-to {
-  opacity: 0;
-}
-
-.fade-enter-to, .fade-leave-from {
-  opacity: 1;
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: all 0.25s ease-out;
 }
 </style>

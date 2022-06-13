@@ -6,14 +6,23 @@
     </div>
     <div class="card-body">
       <div id="calendar-day">
-        <CalendarEvent v-for="event in day.events" :key="event.id" :event="event" :day="day">
-          <template #eventPriority="slotProps">
-            <h4>{{ slotProps.computedPriority }}</h4>
-          </template>
-          <template #default="{ event }">
-            {{ event.title }}
-          </template>
-        </CalendarEvent>
+        <transition name="fade" mode="out-in">
+          <div v-if="day.events.length">
+            <CalendarEvent v-for="event in day.events" :key="event.id" :event="event" :day="day">
+              <template #eventPriority="slotProps">
+                <h4>{{ slotProps.computedPriority }}</h4>
+              </template>
+              <template #default="{ event }">
+                {{ event.title }}
+              </template>
+            </CalendarEvent>
+          </div>
+          <div v-else>
+            <div class="alert alert-light text-center">
+              <i>Keine Termine</i>
+            </div>
+          </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -63,6 +72,5 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
 </style>
